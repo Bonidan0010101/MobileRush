@@ -20,7 +20,7 @@ public class PatternsScript : MonoBehaviour {
     void Update () {
         if(Time.time > NextSpawn)
         {
-            int r = Random.Range(1, 3);
+            int r = Random.Range(1, 4);
 
             NextSpawn = Time.time + SpawnRate;
             randomy = Random.Range(33.7f, 14.9f);

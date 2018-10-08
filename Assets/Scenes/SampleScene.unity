@@ -144,6 +144,7 @@ MonoBehaviour:
   Patter:
   - {fileID: 1259320349274916, guid: cb928cecf1e21e3488a3a7e660502e1d, type: 2}
   - {fileID: 1199737625937970, guid: ef152277a2e96b7418b8dcfadd086e38, type: 2}
+  - {fileID: 1318052042142540, guid: a68946e9b785d46419ab2ea8015c0bf9, type: 2}
   SpawnRate: 5
 --- !u!4 &76849650
 Transform:
@@ -170,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coin: {fileID: 1055884690759740, guid: 3402c048128413540a9798c3e41e3bbd, type: 2}
-  SpawnRate: 10
+  SpawnRate: 8
 --- !u!1 &92996706
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,7 +719,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.16319275, y: 0.9}
+  m_Offset: {x: 0.16319275, y: 0.90470433}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -729,7 +730,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9216957, y: 1.8}
+  m_Size: {x: 0.9216957, y: 1.7905912}
   m_EdgeRadius: 0
 --- !u!114 &944660611
 MonoBehaviour:
