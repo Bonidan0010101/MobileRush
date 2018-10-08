@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NewBehaviourScript : MonoBehaviour {
+public class SaveScore : MonoBehaviour {
 
     public int score;
     public int highScore = 0;
@@ -19,7 +19,7 @@ public class NewBehaviourScript : MonoBehaviour {
     void Update()
     {
         guiText.text = "Score:" + score.ToString();
-        score = GetComponent<Points>().num++;
+        //score = GetComponent<Points>().num++;
     }
 
     void OnDisable()

@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 public class ActPlayer : MonoBehaviour {
 
@@ -63,11 +60,19 @@ public class ActPlayer : MonoBehaviour {
 			case "down":
 				if (transform.position.y >= -3.7f)
 				{
-					transform.position = new Vector2(transform.position.x, transform.position.y - 0.125f);
+					transform.position = new Vector2(transform.position.x, transform.position.y - 0.25f);
 				}
 				else
 				{
-					state = "stopped";
+                    if (transform.position.x > -7f)
+                    {
+                        state = "dashBack";
+                    }
+                    else
+                    {
+                        state = "stopped";
+                    }
+
 				}
 				break;
 
@@ -166,14 +171,18 @@ public class ActPlayer : MonoBehaviour {
 
         if (coll.gameObject.tag.Equals("Barrel"))
         {
-            if(coll.transform.gameObject.GetComponent<DestroyPettern>().GetCanDestroy())
+            if(coll.transform.gameObject.GetComponent<DestroyPettern>().GetCanDestroy() && canDestroyObject == true)
             {
                 point.num += 100;
+                Destroy(coll.gameObject);
+            }
+            else
+            {
+                Destroy(this.gameObject);
             }
 
-			Destroy(this.gameObject);
-            QScored.SetActive(true);
-            MostraScore.SetActive(true);
+            //QScored.SetActive(true);
+            //MostraScore.SetActive(true);
 
         }
         if (coll.gameObject.tag.Equals("Coin"))
