@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ActPlayer : MonoBehaviour {
 
@@ -21,8 +22,8 @@ public class ActPlayer : MonoBehaviour {
 
     private Points point;
 
-    public GameObject QScored;
-    public GameObject MostraScore;
+    public GameObject MenuScored;
+    public GameObject HighScored;
 
     void Awake()
     {
@@ -82,10 +83,16 @@ public class ActPlayer : MonoBehaviour {
                 {
                     transform.position = new Vector2(transform.position.x + 0.7f, transform.position.y);
                     canDestroyObject = true;
+                    //Alterei isso
+                    animator.SetBool("jumpDash", true);
+                    //A alteração acabou
                 }
                 else
                 {
                     state = "dashBack";
+                    //Alterei isso
+                    animator.SetBool("isDashing", false);
+                    //A alteração acabou
                 }
                 break;
             case "dashBack":
@@ -109,6 +116,12 @@ public class ActPlayer : MonoBehaviour {
 		}
 
         print(canDestroyObject);
+        //Alterei isso
+        if (canJump == true)
+        {
+            EndAnimationJump();
+        }
+        //A alteração acabou
     }
 
     void BasicFunction()
@@ -132,8 +145,12 @@ public class ActPlayer : MonoBehaviour {
             {
                 if (Input.mousePosition.x - mouse.x < limiar)
                 {
+                    //Alterei isso
+                    animator.SetBool("isJumping", true);
+                    //A alteração acabou
                     canJump = false;
-					state = "up";		
+					state = "up";	
+                    
                 }
             }
         }
@@ -143,7 +160,10 @@ public class ActPlayer : MonoBehaviour {
     {
         if(Input.mousePosition.x - mouse.x >= limiar)
         {
-			state = "dashGo";
+            //Alterei isso
+            animator.SetBool("isDashing", true);
+            //A alteração acabou
+            state = "dashGo";
         }
     }
 
@@ -179,10 +199,9 @@ public class ActPlayer : MonoBehaviour {
             else
             {
                 Destroy(this.gameObject);
+                MenuScored.SetActive(true);
+                HighScored.SetActive(true);
             }
-
-            //QScored.SetActive(true);
-            //MostraScore.SetActive(true);
 
         }
         if (coll.gameObject.tag.Equals("Coin"))

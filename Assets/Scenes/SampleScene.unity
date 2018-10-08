@@ -306,6 +306,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num: 0
   text: {fileID: 348701281}
+  score: 0
+  highScore: 0
+  SCORE: {fileID: 1213930493}
 --- !u!1 &438275023
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,8 +743,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  QScored: {fileID: 438275023}
-  MostraScore: {fileID: 1714024740}
+  MenuScored: {fileID: 1714024740}
+  HighScored: {fileID: 438275023}
 --- !u!50 &944660612
 Rigidbody2D:
   serializedVersion: 4
@@ -915,7 +918,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 5
     m_MaxSize: 60
-    m_Alignment: 1
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1336,7 +1339,6 @@ GameObject:
   - component: {fileID: 1714024744}
   - component: {fileID: 1714024743}
   - component: {fileID: 1714024742}
-  - component: {fileID: 1714024745}
   m_Layer: 5
   m_Name: MostraScore
   m_TagString: Untagged
@@ -1414,20 +1416,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1714024740}
---- !u!114 &1714024745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1714024740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 647f763fa4eaeef43bdbdb1786e54663, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  score: 0
-  highScore: 0
-  guiText: {fileID: 1213930493}
 --- !u!1 &1935023888
 GameObject:
   m_ObjectHideFlags: 0
