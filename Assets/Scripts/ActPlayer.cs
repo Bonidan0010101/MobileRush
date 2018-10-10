@@ -24,6 +24,7 @@ public class ActPlayer : MonoBehaviour {
 
     public GameObject MenuScored;
     public GameObject HighScored;
+    public GameObject Restart;
 
     void Awake()
     {
@@ -201,6 +202,7 @@ public class ActPlayer : MonoBehaviour {
                 Destroy(this.gameObject);
                 MenuScored.SetActive(true);
                 HighScored.SetActive(true);
+                Restart.SetActive(true);
             }
 
         }
