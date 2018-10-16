@@ -4,18 +4,20 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ResetScene : MonoBehaviour {
+public class SaveScore : MonoBehaviour {
 
+    public int[] highScores = new int[5];
+    string highScoreKey = "";
 
     void Start()
     {
-        //Get the highScore from player prefs if it is there, 0 otherwise.
-       
-    }
+        for (int i = 0; i < highScores.Length; i++)
+        {
+            highScoreKey = "Points" + (i + 1).ToString();
+            highScores[i] = PlayerPrefs.GetInt(highScoreKey, 0);
+            //use these values in whatever shows the leaderboard(s).
+        }
 
-    void Update()
-    {
-       
     }
 
 }

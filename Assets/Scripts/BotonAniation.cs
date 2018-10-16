@@ -52,4 +52,9 @@ public class BotonAniation : MonoBehaviour {
             SceneManager.LoadScene(1);
         }
     }
+
+    public void ClearHighScore()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 }
