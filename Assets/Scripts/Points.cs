@@ -13,6 +13,8 @@ public class Points : MonoBehaviour {
     public int num;
     public Text text;
 
+    public int[] highScores = new int[5];
+
     public int score = 0;
     public int highScore = 0;
     string highScoreKey = "Points";
@@ -29,6 +31,7 @@ public class Points : MonoBehaviour {
         ground = GameObject.FindGameObjectWithTag("Ground");
         background = GameObject.FindGameObjectWithTag("Background");
         highScore = PlayerPrefs.GetInt(highScoreKey, 0);
+       
     }
 
     void Update()
@@ -41,18 +44,34 @@ public class Points : MonoBehaviour {
     }
     void OnDisable()
     {
-        //If our scoree is greter than highscore, set new higscore and save.
-
+       
     }
     void SavePoints()
     {
         if (player == null)
         {
             num--;
-            if (num > highScore)
+            /* if (num > highScore)
+             {
+                 int temp = highScore;
+                 PlayerPrefs.SetInt(highScoreKey, num);
+                 num = temp;
+                 PlayerPrefs.Save();
+             }*/
+
+            //novasso
+            for (int i = 0; i < highScores.Length; i++)
             {
+                highScoreKey = "Points" + (i + 1).ToString();
+                highScores[i] = PlayerPrefs.GetInt(highScoreKey, num);
+            }
+
+            if (num > highScore)
+            { 
                 PlayerPrefs.SetInt(highScoreKey, num);
                 PlayerPrefs.Save();
+                num = highScore;
+                //Devassa
             }
         }
     }
