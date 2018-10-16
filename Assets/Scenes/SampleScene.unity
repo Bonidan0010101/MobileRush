@@ -438,7 +438,6 @@ GameObject:
   - component: {fileID: 348701282}
   - component: {fileID: 348701281}
   - component: {fileID: 348701283}
-  - component: {fileID: 348701284}
   m_Layer: 5
   m_Name: Points
   m_TagString: Points
@@ -517,22 +516,9 @@ MonoBehaviour:
   num: 0
   text: {fileID: 348701281}
   highScores: 0000000000000000000000000000000000000000
-  highScoredd: 00000000
   score: 0
   highScore: 0
   SCORE: {fileID: 1213930493}
---- !u!114 &348701284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 348701279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 647f763fa4eaeef43bdbdb1786e54663, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  highScores: 0000000000000000000000000000000000000000
 --- !u!1 &438275023
 GameObject:
   m_ObjectHideFlags: 0

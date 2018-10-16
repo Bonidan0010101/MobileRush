@@ -14,10 +14,9 @@ public class Points : MonoBehaviour {
     public Text text;
 
     public int[] highScores = new int[5];
-    public List<int> highScoredd = new List<int>();
-
+   
     public int score = 0;
-    public int highScore = 0;
+    public int highScore;
     string highScoreKey = "Points";
     public Text SCORE;
 
@@ -33,10 +32,10 @@ public class Points : MonoBehaviour {
         background = GameObject.FindGameObjectWithTag("Background");
         highScore = PlayerPrefs.GetInt(highScoreKey, 0);
 
-        for (int i = 0; i < highScores.Length; i++)
+            for (int i = 0; i < highScores.Length; i++)
         {
-                highScoreKey = "Points" + (i + 5).ToString();
-                highScores[i] = PlayerPrefs.GetInt(highScoreKey, 0);
+                highScoreKey = "Points" + (i + 1).ToString();
+            highScores[i] = PlayerPrefs.GetInt(highScoreKey, 0);
         }
         
     }
@@ -44,7 +43,7 @@ public class Points : MonoBehaviour {
     void Update()
     {
         /// teste
-        SCORE.text = " " + highScore.ToString();
+        SCORE.text = " " + highScores[4].ToString();
         num++;
         text.text = num.ToString();
         SavePoints();
@@ -60,11 +59,10 @@ public class Points : MonoBehaviour {
         {
             num--;
             //novasso
-            if (num > highScore)
-            { 
+            if (num > highScores[4])
+            {
                 PlayerPrefs.SetInt(highScoreKey, num);
                 PlayerPrefs.Save();
-                //num = highScore;
                 //Devassa
             }
         }
