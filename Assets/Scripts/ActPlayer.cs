@@ -117,7 +117,7 @@ public class ActPlayer : MonoBehaviour {
                 break;
 		}
 
-        print(canDestroyObject);
+        //print(canDestroyObject);
         //Alterei isso
         if (canJump == true)
         {

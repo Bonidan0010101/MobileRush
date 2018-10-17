@@ -32,21 +32,26 @@ public class Points : MonoBehaviour {
         background = GameObject.FindGameObjectWithTag("Background");
         highScore = PlayerPrefs.GetInt(highScoreKey, 0);
 
-            for (int i = 0; i < highScores.Length; i++)
-        {
-                highScoreKey = "Points" + (i + 1).ToString();
-            highScores[i] = PlayerPrefs.GetInt(highScoreKey, 0);
+        for (int i = 0; i < highScores.Length; i++)
+        {                
+            highScores[i] = PlayerPrefs.GetInt(highScoreKey + (i + 1).ToString(), 0);
+        
+            Debug.Log(highScores[i]);
         }
         
     }
 
     void Update()
     {
-        /// teste
-        SCORE.text = " " + highScores[4].ToString();
-        num++;
-        text.text = num.ToString();
+        if(player != null)
+        {
+            SCORE.text = " " + highScores[4].ToString();
+            num++;
+            text.text = num.ToString();            
+        }
+
         SavePoints();
+
     }
     void OnDisable()
     {
@@ -54,16 +59,27 @@ public class Points : MonoBehaviour {
     }
 
     void SavePoints()
-    {
+    {        
         if (player == null)
-        {
-            num--;
-            //novasso
-            if (num > highScores[4])
-            {
-                PlayerPrefs.SetInt(highScoreKey, num);
-                PlayerPrefs.Save();
-                //Devassa
+        {            
+            for (int i = 0; i < highScores.Length; i++)
+            {                
+                if (num > highScores[i -1])
+                {
+                    if(i == 0)
+                    {
+                        highScores[i] = num;
+                    }
+                    else
+                    {
+                        highScores[i - 1] = highScores[i];
+                        highScores[i] = num;
+                        PlayerPrefs.SetInt(highScoreKey + i.ToString(), highScores[i - 1]);
+                    }
+
+                    PlayerPrefs.SetInt(highScoreKey + (i + 1).ToString(), highScores[i]);
+                    PlayerPrefs.Save();                    
+                }
             }
         }
     }
