@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Points : MonoBehaviour {
+public class Points : MonoBehaviour
+{
 
 
     /// <summary>
@@ -35,76 +36,103 @@ public class Points : MonoBehaviour {
         highScore = PlayerPrefs.GetInt(highScoreKey, 0);
 
         for (int i = 0; i < highScores.Length; i++)
-        {                
+        {
             highScores[i] = PlayerPrefs.GetInt(highScoreKey + (i + 1).ToString(), 0);
-        
+            PlayerPrefs.GetInt(highScoreKey + (i + 1).ToString(), -5);
             Debug.Log(highScores[i]);
         }
-        
+
     }
 
     void Update()
     {
-        if(player != null)
+        if (player != null)
         {
-            SCORE.text = " " + highScores[1].ToString();
+            SCORE.text = " " + highScores[0].ToString();
             num++;
-            text.text = num.ToString();            
+            text.text = num.ToString();
         }
 
-        SavePoints();
-        PlayerPrefs.Save(); 
+        //SavePoints();
 
     }
     void OnDisable()
     {
-       
+
     }
 
-    void SavePoints()
-    {        
-        if (player == null)
-        {
-            /*for (int i = 0; i < ighscored.Count; i++)
-            {                
-                if (num > ighscored[i])
-                {
-                    if(i == 0)
-                    {
-                        ighscored[i] = num;
-                    }
-                    else
-                    {
-                        ighscored[i - 1] = ighscored[i];
-                        ighscored[i] = num;
-                        PlayerPrefs.SetInt(highScoreKey + i.ToString(), ighscored[i]);
-                    }
-
-                    PlayerPrefs.SetInt(highScoreKey + (i + 1).ToString(), ighscored[i]);                  
-                }
-
-            }*/
-
-            var maxpoints = -1;
-            var index = 0;
-
-            for (int a = 0; a < highScores.Length; a++)
+    public void SavePoints()
+    {
+        TradePoints();
+        print("ronaldo");
+        /*for (int i = 0; i < ighscored.Count; i++)
+        {                
+            if (num > ighscored[i])
             {
-                for (int i = 0; i < highScores.Length; i++)
+                if(i == 0)
                 {
-                    if (highScores[i] > maxpoints)
-                    {
-                        maxpoints = highScores[i];
-                        index = i;
-                        
-                    }
+                    ighscored[i] = num;
                 }
-                highScores[index] = -1;
-                highScoresOrdenada[a] = maxpoints;
-                print(maxpoints);
-                maxpoints = -1;
+                else
+                {
+                    ighscored[i - 1] = ighscored[i];
+                    ighscored[i] = num;
+                    PlayerPrefs.SetInt(highScoreKey + i.ToString(), ighscored[i]);
+                }
+
+                PlayerPrefs.SetInt(highScoreKey + (i + 1).ToString(), ighscored[i]);                  
             }
 
+        }*/
+
+        var maxpoints = 0;
+        var index = 0;
+
+        for (int a = 0; a < highScores.Length; a++)
+        {
+            for (int i = 0; i < highScores.Length; i++)
+            {
+                if (highScores[i] > maxpoints)
+                {
+                    maxpoints = highScores[i];
+                    index = i;
+                }
+            }
+            highScores[index] = 0;
+            highScoresOrdenada[a] = maxpoints;
+            PlayerPrefs.SetInt(highScoreKey + (index + 1).ToString(), highScoresOrdenada[a]);
+            PlayerPrefs.Save();
+            //print("MXP:" + maxpoints);
+            maxpoints = 0;
+        }
+        for (int a = 0; a < highScores.Length; a++)
+        {
+            highScores[a] = highScoresOrdenada[a];
         }
     }
-}
+    public void TradePoints()
+    {
+         var tradepoints = 99999999999999;
+         var index = 0;
+
+             for (int i = 0; i < highScores.Length; i++)
+             {
+                 if (highScores[i] < tradepoints)
+                 {
+                     tradepoints = highScores[i];
+                     index = i;
+
+                 }
+             }
+        highScores[index] = num;
+             //highScoresOrdenada[a] = tradepoints;
+             print("trade:" + tradepoints);
+
+     }
+    }
+ /*
+ * Pegando uma array não ordenada
+ * Transformando ela em uma array ordenada
+ * Criando uma array ordenada e salvando 
+ */
+

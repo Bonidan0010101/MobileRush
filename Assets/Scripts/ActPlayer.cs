@@ -200,6 +200,7 @@ public class ActPlayer : MonoBehaviour {
             }
             else
             {
+                GameObject.FindGameObjectWithTag("Points").GetComponent<Points>().SavePoints();
                 Destroy(this.gameObject);
                 MenuScored.SetActive(true);
                 HighScored.SetActive(true);
