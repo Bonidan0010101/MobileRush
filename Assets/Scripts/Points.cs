@@ -14,7 +14,9 @@ public class Points : MonoBehaviour {
     public Text text;
 
     public int[] highScores = new int[5];
-   
+    public int[] highScoresOrdenada = new int[5];
+    //public List<int> ighscored;  
+
     public int score = 0;
     public int highScore;
     string highScoreKey = "Points";
@@ -45,12 +47,13 @@ public class Points : MonoBehaviour {
     {
         if(player != null)
         {
-            SCORE.text = " " + highScores[4].ToString();
+            SCORE.text = " " + highScores[1].ToString();
             num++;
             text.text = num.ToString();            
         }
 
         SavePoints();
+        PlayerPrefs.Save(); 
 
     }
     void OnDisable()
@@ -61,26 +64,47 @@ public class Points : MonoBehaviour {
     void SavePoints()
     {        
         if (player == null)
-        {            
-            for (int i = 0; i < highScores.Length; i++)
+        {
+            /*for (int i = 0; i < ighscored.Count; i++)
             {                
-                if (num > highScores[i -1])
+                if (num > ighscored[i])
                 {
                     if(i == 0)
                     {
-                        highScores[i] = num;
+                        ighscored[i] = num;
                     }
                     else
                     {
-                        highScores[i - 1] = highScores[i];
-                        highScores[i] = num;
-                        PlayerPrefs.SetInt(highScoreKey + i.ToString(), highScores[i - 1]);
+                        ighscored[i - 1] = ighscored[i];
+                        ighscored[i] = num;
+                        PlayerPrefs.SetInt(highScoreKey + i.ToString(), ighscored[i]);
                     }
 
-                    PlayerPrefs.SetInt(highScoreKey + (i + 1).ToString(), highScores[i]);
-                    PlayerPrefs.Save();                    
+                    PlayerPrefs.SetInt(highScoreKey + (i + 1).ToString(), ighscored[i]);                  
                 }
+
+            }*/
+
+            var maxpoints = -1;
+            var index = 0;
+
+            for (int a = 0; a < highScores.Length; a++)
+            {
+                for (int i = 0; i < highScores.Length; i++)
+                {
+                    if (highScores[i] > maxpoints)
+                    {
+                        maxpoints = highScores[i];
+                        index = i;
+                        
+                    }
+                }
+                highScores[index] = -1;
+                highScoresOrdenada[a] = maxpoints;
+                print(maxpoints);
+                maxpoints = -1;
             }
+
         }
     }
 }

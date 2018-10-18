@@ -516,6 +516,7 @@ MonoBehaviour:
   num: 0
   text: {fileID: 348701281}
   highScores: 0000000000000000000000000000000000000000
+  highScoresOrdenada: 0000000000000000000000000000000000000000
   score: 0
   highScore: 0
   SCORE: {fileID: 1213930493}
