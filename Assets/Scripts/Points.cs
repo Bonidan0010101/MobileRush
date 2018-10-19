@@ -48,17 +48,17 @@ public class Points : MonoBehaviour
     {
         if (player != null)
         {
-            SCORE.text = " " + highScores[0].ToString();
             num++;
             text.text = num.ToString();
         }
+        ApareceScore();
 
         //SavePoints();
 
     }
-    void OnDisable()
+    void ApareceScore()
     {
-
+        SCORE.text = " " + highScores[0].ToString();
     }
 
     public void SavePoints()
@@ -110,7 +110,7 @@ public class Points : MonoBehaviour
             highScores[a] = highScoresOrdenada[a];
         }
     }
-    public void TradePoints()
+         public void TradePoints()
     {
          var tradepoints = 99999999999999;
          var index = 0;
