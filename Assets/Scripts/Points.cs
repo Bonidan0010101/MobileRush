@@ -38,7 +38,7 @@ public class Points : MonoBehaviour
         for (int i = 0; i < highScores.Length; i++)
         {
             highScores[i] = PlayerPrefs.GetInt(highScoreKey + (i + 1).ToString(), 0);
-            PlayerPrefs.GetInt(highScoreKey + (i + 1).ToString(), -5);
+            highScoresOrdenada[i] = PlayerPrefs.GetInt(highScoreKey + (i + 1).ToString(), -5);
             Debug.Log(highScores[i]);
         }
 
@@ -100,7 +100,7 @@ public class Points : MonoBehaviour
             }
             highScores[index] = 0;
             highScoresOrdenada[a] = maxpoints;
-            PlayerPrefs.SetInt(highScoreKey + (index + 1).ToString(), highScoresOrdenada[a]);
+            PlayerPrefs.SetInt(highScoreKey + (a + 1).ToString(), highScoresOrdenada[a]);
             PlayerPrefs.Save();
             //print("MXP:" + maxpoints);
             maxpoints = 0;
