@@ -11,6 +11,9 @@ TagManager:
   - Coin
   - Play
   - Exit
+  - Menu
+  - HowtoPlay
+  - Creditos
   layers:
   - Default
   - TransparentFX
