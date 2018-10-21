@@ -1,7 +1,9 @@
 fileFormatVersion: 2
 guid: 9d7af5dd43d0c694cbd1fbec3ba41970
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: troncos_0
+    21300002: troncos_1
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -80,7 +82,47 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: troncos_0
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 620
+        width: 250
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72ac9281573f1d34cb0110f6228f1c45
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troncos_1
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 120
+        width: 270
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c34081da98ede64797bf212b204142f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
