@@ -23,6 +23,7 @@ public class ActPlayer : MonoBehaviour
     public GameObject HighScored;
     public GameObject Restart;
     public GameObject ClearHighscore;
+    public GameObject MainMenu;
 
     void Awake()
     {
@@ -227,6 +228,7 @@ public class ActPlayer : MonoBehaviour
                 HighScored.SetActive(true);
                 Restart.SetActive(true);
                 ClearHighscore.SetActive(true);
+                MainMenu.SetActive(true);
             }
 
         }
