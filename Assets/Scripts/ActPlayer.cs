@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ActPlayer : MonoBehaviour {
+public class ActPlayer : MonoBehaviour
+{
 
-	private string state;
+    private string state;
 
     private int limiar;
 
@@ -41,28 +42,28 @@ public class ActPlayer : MonoBehaviour {
 
     void Update()
     {
-		BasicFunction();
+        BasicFunction();
+        Swipe();
+        switch (state)
+        {
+            case "up":
+                if (transform.position.y < 0.5f)
+                {
+                    transform.position = new Vector2(transform.position.x, transform.position.y + 0.25f);
+                }
+                else
+                {
+                    state = "down";
+                }
+                break;
 
-		switch (state)
-		{
-			case "up":
-				if (transform.position.y < 0.5f)
-				{
-					transform.position = new Vector2(transform.position.x, transform.position.y + 0.25f);
-				}
-				else
-				{
-					state = "down";
-				}
-				break;
-
-			case "down":
-				if (transform.position.y >= -3.7f)
-				{
-					transform.position = new Vector2(transform.position.x, transform.position.y - 0.28f);
-				}
-				else
-				{
+            case "down":
+                if (transform.position.y >= -3.7f)
+                {
+                    transform.position = new Vector2(transform.position.x, transform.position.y - 0.28f);
+                }
+                else
+                {
                     if (transform.position.x > -7f)
                     {
                         state = "dashBack";
@@ -72,12 +73,12 @@ public class ActPlayer : MonoBehaviour {
                         state = "stopped";
                     }
 
-				}
-				break;
+                }
+                break;
 
 
             case "dashGo":
-                if(transform.position.x <= 2f)
+                if (transform.position.x <= 2f)
                 {
                     transform.position = new Vector2(transform.position.x + 0.7f, transform.position.y);
                     canDestroyObject = true;
@@ -94,13 +95,13 @@ public class ActPlayer : MonoBehaviour {
                 }
                 break;
             case "dashBack":
-                if(transform.position.x >= -7f)
+                if (transform.position.x >= -7f)
                 {
                     transform.position = new Vector2(transform.position.x - 0.7f, transform.position.y);
                 }
                 else
                 {
-                    if(transform.position.y > -3.7)
+                    if (transform.position.y > -3.7)
                     {
                         state = "down";
                     }
@@ -111,7 +112,7 @@ public class ActPlayer : MonoBehaviour {
                     canDestroyObject = false;
                 }
                 break;
-		}
+        }
 
         //print(canDestroyObject);
         //Alterei isso
@@ -124,18 +125,16 @@ public class ActPlayer : MonoBehaviour {
 
     void BasicFunction()
     {
-       if (Input.GetMouseButtonDown(0))
-       {
-			mouse = Input.mousePosition;
+        if (Input.GetMouseButtonDown(0))
+        {
+            mouse = Input.mousePosition;
 
-			Invoke("RealJump", 0.05f);
-			Invoke("Swipe", 0.05f);
-
-       }
+            Invoke("RealJump", 0.05f);
+        }
     }
 
     #region fuctionsBases
-    void RealJump()
+   void RealJump()
     {
         if (canJump)
         {
@@ -147,21 +146,47 @@ public class ActPlayer : MonoBehaviour {
                     animator.SetBool("isJumping", true);
                     //A alteração acabou
                     canJump = false;
-					state = "up";	
-                    
+                    state = "up";
+
                 }
             }
         }
     }
 
+   /* void RealJump() Umdia se conseguir, quero testar isso
+    {
+        if (canJump)
+        {
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+            {
+                Vector2 touchAlfa = Input.GetTouch(0).deltaPosition;
+
+                if (touchAlfa.x < limiar)
+                {
+                    //Alterei isso
+                    animator.SetBool("isJumping", true);
+                    //A alteração acabou
+                    canJump = false;
+                    state = "up";
+
+                }
+            }
+        }
+    }*/
+
     void Swipe()
     {
-        if(Input.mousePosition.x - mouse.x >= limiar)
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
         {
-            //Alterei isso
-            animator.SetBool("isDashing", true);
-            //A alteração acabou
-            state = "dashGo";
+            Vector2 touchDelta = Input.GetTouch(0).deltaPosition;
+
+            if (touchDelta.x >= limiar)
+            {
+                //Alterei isso
+                animator.SetBool("isDashing", true);
+                //A alteração acabou
+                state = "dashGo";
+            }
         }
     }
 
@@ -181,7 +206,7 @@ public class ActPlayer : MonoBehaviour {
     #endregion
 
     void OnCollisionEnter2D(Collision2D coll)
-    {   
+    {
         if (coll.gameObject.tag.Equals("Ground"))
         {
             canJump = true;
@@ -189,7 +214,7 @@ public class ActPlayer : MonoBehaviour {
 
         if (coll.gameObject.tag.Equals("Barrel"))
         {
-            if(coll.transform.gameObject.GetComponent<DestroyPettern>().GetCanDestroy() && canDestroyObject == true)
+            if (coll.transform.gameObject.GetComponent<DestroyPettern>().GetCanDestroy() && canDestroyObject == true)
             {
                 point.num += 100;
                 Destroy(coll.gameObject);
