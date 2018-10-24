@@ -21,20 +21,29 @@ public class PatternsManager : MonoBehaviour {
             plusSpeed = 2f;
             speed = speed + plusSpeed;
         }
-        if (p.num >= 4000 && p.num < 6000)
+        else if (p.num >= 4000 && p.num < 6000)
         {
             plusSpeed = 4f;
             speed = speed + plusSpeed;
         }
-        if (p.num >= 6000 & p.num < 8000)
+        else if (p.num >= 6000 & p.num < 8000)
         {
             plusSpeed = 6f;
             speed = speed + plusSpeed;
         }
-        if (p.num >= 8000)
+        else if (p.num >= 8000 & p.num < 10000)
         {
             plusSpeed = 8f;
             speed = speed + plusSpeed;
+        }
+        else if(p.num >= 10000 & p.num < 12000)
+        {
+            plusSpeed = 10f;
+            speed = speed + plusSpeed;
+        }
+        else if(p.num >= 12000 & p.num < 14000)
+        {
+
         }
     }
 

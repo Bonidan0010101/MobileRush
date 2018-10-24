@@ -36,8 +36,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4608812162591202}
   - component: {fileID: 212981536059208500}
-  - component: {fileID: 61734913479768194}
   - component: {fileID: 114307617847410416}
+  - component: {fileID: 58974575023920878}
   m_Layer: 0
   m_Name: All (2)
   m_TagString: Barrel
@@ -54,8 +54,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4850922107666388}
   - component: {fileID: 212012005153101010}
-  - component: {fileID: 61001899198874640}
   - component: {fileID: 114512489811255242}
+  - component: {fileID: 58023854816685350}
   m_Layer: 0
   m_Name: All
   m_TagString: Barrel
@@ -72,8 +72,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4350792607308502}
   - component: {fileID: 212671985546552950}
-  - component: {fileID: 61663813688049542}
   - component: {fileID: 114672374083249246}
+  - component: {fileID: 58690352944199368}
   m_Layer: 0
   m_Name: All (1)
   m_TagString: Barrel
@@ -136,8 +136,8 @@ Transform:
   m_Father: {fileID: 4770371933499022}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61001899198874640
-BoxCollider2D:
+--- !u!58 &58023854816685350
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -149,20 +149,10 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.7, y: 2.4}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5}
-  m_EdgeRadius: 0
---- !u!61 &61663813688049542
-BoxCollider2D:
+  m_Radius: 0.8
+--- !u!58 &58690352944199368
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -174,20 +164,10 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.5, y: 2.4}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5}
-  m_EdgeRadius: 0
---- !u!61 &61734913479768194
-BoxCollider2D:
+  m_Radius: 0.8
+--- !u!58 &58974575023920878
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -199,18 +179,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.5, y: 2.4}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5}
-  m_EdgeRadius: 0
+  m_Radius: 0.8
 --- !u!114 &114307617847410416
 MonoBehaviour:
   m_ObjectHideFlags: 1

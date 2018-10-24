@@ -4,11 +4,17 @@ using UnityEngine.SceneManagement;
 public class ActPlayer : MonoBehaviour
 {
 
+    public float dashGO;
+    public float dashBACK;
+    public float jumpGO;
+    public float jumpBACK;
+
     private string state;
 
     private int limiar;
 
     private bool canJump;
+    private bool canDash;
     private bool canDestroyObject;
 
     private Rigidbody2D rb;
@@ -28,6 +34,7 @@ public class ActPlayer : MonoBehaviour
     void Awake()
     {
         canJump = true;
+        canDash = true;
     }
 
     void Start()
@@ -45,12 +52,16 @@ public class ActPlayer : MonoBehaviour
     {
         BasicFunction();
         Swipe();
+
+        RealJumpPC();
+        SwipeComputer();    
+
         switch (state)
         {
             case "up":
                 if (transform.position.y < 0.5f)
                 {
-                    transform.position = new Vector2(transform.position.x, transform.position.y + 0.25f);
+                    transform.position = new Vector2(transform.position.x, transform.position.y + jumpGO);
                 }
                 else
                 {
@@ -61,7 +72,7 @@ public class ActPlayer : MonoBehaviour
             case "down":
                 if (transform.position.y >= -3.7f)
                 {
-                    transform.position = new Vector2(transform.position.x, transform.position.y - 0.28f);
+                    transform.position = new Vector2(transform.position.x, transform.position.y - jumpBACK);
                 }
                 else
                 {
@@ -81,24 +92,20 @@ public class ActPlayer : MonoBehaviour
             case "dashGo":
                 if (transform.position.x <= 2f)
                 {
-                    transform.position = new Vector2(transform.position.x + 0.7f, transform.position.y);
+                    transform.position = new Vector2(transform.position.x + dashGO, transform.position.y);
                     canDestroyObject = true;
-                    //Alterei isso
                     animator.SetBool("jumpDash", true);
-                    //A alteração acabou
                 }
                 else
                 {
                     state = "dashBack";
-                    //Alterei isso
                     animator.SetBool("isDashing", false);
-                    //A alteração acabou
                 }
                 break;
             case "dashBack":
                 if (transform.position.x >= -7f)
                 {
-                    transform.position = new Vector2(transform.position.x - 0.7f, transform.position.y);
+                    transform.position = new Vector2(transform.position.x - dashBACK, transform.position.y);
                 }
                 else
                 {
@@ -111,17 +118,16 @@ public class ActPlayer : MonoBehaviour
                         state = "stopped";
                     }
                     canDestroyObject = false;
+
+                    canDash = true;
                 }
                 break;
         }
 
-        //print(canDestroyObject);
-        //Alterei isso
         if (canJump == true)
         {
             EndAnimationJump();
         }
-        //A alteração acabou
     }
 
     void BasicFunction()
@@ -143,9 +149,7 @@ public class ActPlayer : MonoBehaviour
             {
                 if (Input.mousePosition.x - mouse.x < limiar)
                 {
-                    //Alterei isso
                     animator.SetBool("isJumping", true);
-                    //A alteração acabou
                     canJump = false;
                     state = "up";
 
@@ -154,26 +158,6 @@ public class ActPlayer : MonoBehaviour
         }
     }
 
-   /* void RealJump() Umdia se conseguir, quero testar isso
-    {
-        if (canJump)
-        {
-            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-            {
-                Vector2 touchAlfa = Input.GetTouch(0).deltaPosition;
-
-                if (touchAlfa.x < limiar)
-                {
-                    //Alterei isso
-                    animator.SetBool("isJumping", true);
-                    //A alteração acabou
-                    canJump = false;
-                    state = "up";
-
-                }
-            }
-        }
-    }*/
 
     void Swipe()
     {
@@ -181,16 +165,36 @@ public class ActPlayer : MonoBehaviour
         {
             Vector2 touchDelta = Input.GetTouch(0).deltaPosition;
 
-            if (touchDelta.x >= limiar)
+            if (touchDelta.x >= limiar && canDash)// Boni se isso não funcionar na Build tira esse "&& candash"
             {
-                //Alterei isso
                 animator.SetBool("isDashing", true);
-                //A alteração acabou
                 state = "dashGo";
+                canDash = false;
             }
         }
     }
+    #endregion
 
+    #region FuctinBasePC
+    void RealJumpPC()
+    {
+        if (Input.GetKeyDown(KeyCode.W) && canJump|| Input.GetKeyDown(KeyCode.UpArrow ) && canJump)
+        {
+            animator.SetBool("isJumping", true);
+            canJump = false;
+            state = "up";
+        }
+    }
+
+    void SwipeComputer()
+    {
+        if (Input.GetKeyDown(KeyCode.D) && canDash || Input.GetKeyDown(KeyCode.RightArrow) && canDash)
+        {
+            animator.SetBool("isDashing", true);
+            state = "dashGo";
+            canDash = false;
+        }
+    }
     #endregion
 
     #region EndAnims
