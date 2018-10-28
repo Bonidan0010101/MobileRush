@@ -39,7 +39,6 @@ public class Points : MonoBehaviour
         {
             highScores[i] = PlayerPrefs.GetInt(highScoreKey + (i + 1).ToString(), 0);
             highScoresOrdenada[i] = PlayerPrefs.GetInt(highScoreKey + (i + 1).ToString(), -5);
-            Debug.Log(highScores[i]);
         }
 
     }
@@ -64,7 +63,6 @@ public class Points : MonoBehaviour
     public void SavePoints()
     {
         TradePoints();
-        print("ronaldo");
         /*for (int i = 0; i < ighscored.Count; i++)
         {                
             if (num > ighscored[i])
@@ -110,26 +108,25 @@ public class Points : MonoBehaviour
             highScores[a] = highScoresOrdenada[a];
         }
     }
-         public void TradePoints()
-    {
-         var tradepoints = 99999999999999;
-         var index = 0;
 
-             for (int i = 0; i < highScores.Length; i++)
-             {
-                 if (highScores[i] < tradepoints)
-                 {
-                     tradepoints = highScores[i];
-                     index = i;
+	public void TradePoints()
+	{
+	var tradepoints = 99999999999999;
+	var index = 0;
 
-                 }
-             }
-        highScores[index] = num;
-             //highScoresOrdenada[a] = tradepoints;
-             print("trade:" + tradepoints);
+		for (int i = 0; i < highScores.Length; i++)
+		{
+			if (highScores[i] < tradepoints)
+			{
+				tradepoints = highScores[i];
+				index = i;
+			}
+		}
 
-     }
-    }
+		highScores[index] = num;
+		//highScoresOrdenada[a] = tradepoints;
+	}
+}
  /*
  * Pegando uma array não ordenada
  * Transformando ela em uma array ordenada

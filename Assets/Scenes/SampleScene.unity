@@ -170,7 +170,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c96d7df00fe657046b06d0d279778759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coin: {fileID: 1055884690759740, guid: 3402c048128413540a9798c3e41e3bbd, type: 2}
+  coin:
+  - {fileID: 1055884690759740, guid: 3402c048128413540a9798c3e41e3bbd, type: 2}
+  - {fileID: 1416838108701644, guid: 89a90db5f890b9d4ea2a353483cbe203, type: 2}
   SpawnRate: 8
 --- !u!1 &92996706
 GameObject:
@@ -958,8 +960,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dashGO: 0.7
   dashBACK: 0.7
-  jumpGO: 0.28
-  jumpBACK: 0.22
+  jumpGO: 0.31
+  jumpBACK: 0.26
   animator: {fileID: 0}
   MenuScored: {fileID: 1714024740}
   HighScored: {fileID: 438275023}

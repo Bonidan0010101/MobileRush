@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class ActPlayer : MonoBehaviour
 {
-
     public float dashGO;
     public float dashBACK;
     public float jumpGO;
@@ -50,7 +49,7 @@ public class ActPlayer : MonoBehaviour
 
     void Update()
     {
-        BasicFunction();
+		RealJump();
         Swipe();
 
         RealJumpPC();
@@ -130,29 +129,21 @@ public class ActPlayer : MonoBehaviour
         }
     }
 
-    void BasicFunction()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            mouse = Input.mousePosition;
-
-            Invoke("RealJump", 0.05f);
-        }
-    }
 
     #region fuctionsBases
    void RealJump()
     {
         if (canJump)
         {
-            if (Input.GetMouseButton(0))
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
-                if (Input.mousePosition.x - mouse.x < limiar)
+				Vector2 touchAlfa = Input.GetTouch(0).deltaPosition;
+
+                if (touchAlfa.x < limiar)
                 {
                     animator.SetBool("isJumping", true);
                     canJump = false;
                     state = "up";
-
                 }
             }
         }
@@ -165,7 +156,7 @@ public class ActPlayer : MonoBehaviour
         {
             Vector2 touchDelta = Input.GetTouch(0).deltaPosition;
 
-            if (touchDelta.x >= limiar && canDash)// Boni se isso não funcionar na Build tira esse "&& candash"
+            if (touchDelta.x >= limiar && canDash)
             {
                 animator.SetBool("isDashing", true);
                 state = "dashGo";
@@ -197,6 +188,7 @@ public class ActPlayer : MonoBehaviour
     }
     #endregion
 
+
     #region EndAnims
 
     void EndAnimationDash()
@@ -221,7 +213,7 @@ public class ActPlayer : MonoBehaviour
         {
             if (coll.transform.gameObject.GetComponent<DestroyPettern>().GetCanDestroy() && canDestroyObject == true)
             {
-                point.num += 100;
+                point.num += 300;
                 Destroy(coll.gameObject);
             }
             else

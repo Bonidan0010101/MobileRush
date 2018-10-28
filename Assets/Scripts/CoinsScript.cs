@@ -5,7 +5,7 @@ using UnityEngine;
 public class CoinsScript : MonoBehaviour {
 
     [SerializeField]
-    private GameObject coin;
+    private GameObject[] coin;
 
     float randomy_x;
     float randomy_y;
@@ -17,12 +17,14 @@ public class CoinsScript : MonoBehaviour {
     {
         if (Time.time > NextSpawn)
         {
-            NextSpawn = Time.time + SpawnRate;
+			int r = Random.Range(1, 2);
+
+			NextSpawn = Time.time + SpawnRate;
             randomy_x = Random.Range(33.7f, 14.9f);
             randomy_y = Random.Range(-2.6f, 2.2f);
             place = new Vector2(randomy_x, randomy_y);
 
-            Instantiate(coin, place, Quaternion.identity);
+            Instantiate(coin[r -1], place, Quaternion.identity);
         }
     }
 }

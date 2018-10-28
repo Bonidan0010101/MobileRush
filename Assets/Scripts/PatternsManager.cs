@@ -43,7 +43,8 @@ public class PatternsManager : MonoBehaviour {
         }
         else if(p.num >= 12000 & p.num < 14000)
         {
-
+			plusSpeed = 12f;
+			speed = speed + plusSpeed;
         }
     }
 
