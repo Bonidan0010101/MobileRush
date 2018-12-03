@@ -63,25 +63,6 @@ public class Points : MonoBehaviour
     public void SavePoints()
     {
         TradePoints();
-        /*for (int i = 0; i < ighscored.Count; i++)
-        {                
-            if (num > ighscored[i])
-            {
-                if(i == 0)
-                {
-                    ighscored[i] = num;
-                }
-                else
-                {
-                    ighscored[i - 1] = ighscored[i];
-                    ighscored[i] = num;
-                    PlayerPrefs.SetInt(highScoreKey + i.ToString(), ighscored[i]);
-                }
-
-                PlayerPrefs.SetInt(highScoreKey + (i + 1).ToString(), ighscored[i]);                  
-            }
-
-        }*/
 
         var maxpoints = 0;
         var index = 0;
@@ -111,8 +92,8 @@ public class Points : MonoBehaviour
 
 	public void TradePoints()
 	{
-	var tradepoints = 99999999999999;
-	var index = 0;
+	    var tradepoints = 99999999999999;
+	    var index = 0;
 
 		for (int i = 0; i < highScores.Length; i++)
 		{

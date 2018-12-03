@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 76849650}
   - component: {fileID: 76849649}
   - component: {fileID: 76849651}
+  - component: {fileID: 76849652}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -174,6 +175,20 @@ MonoBehaviour:
   - {fileID: 1055884690759740, guid: 3402c048128413540a9798c3e41e3bbd, type: 2}
   - {fileID: 1416838108701644, guid: 89a90db5f890b9d4ea2a353483cbe203, type: 2}
   SpawnRate: 8
+--- !u!114 &76849652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 76849648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd3f33e2f642d0546940a147dc7d49b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUp:
+  - {fileID: 1906069187672040, guid: 5a73cb5a6fd2f6d4fbab760169e84d25, type: 2}
+  SpawnRate: 50
 --- !u!1 &92996706
 GameObject:
   m_ObjectHideFlags: 0

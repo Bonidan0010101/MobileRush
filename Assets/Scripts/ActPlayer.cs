@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ActPlayer : MonoBehaviour
@@ -233,5 +234,17 @@ public class ActPlayer : MonoBehaviour
             point.num += 500;
             Destroy(coll.gameObject);
         }
+        if (coll.gameObject.tag.Equals("2X"))
+        {
+            StartCoroutine(DoublePoint());
+            Destroy(coll.gameObject);
+        }
+    }
+//
+    IEnumerator DoublePoint()
+    {
+        point.num *= 2;
+        yield return new WaitForSeconds(2);
+        StopCoroutine(DoublePoint());
     }
 }
