@@ -16,6 +16,7 @@ public class ActPlayer : MonoBehaviour
     private bool canJump;
     private bool canDash;
     private bool canDestroyObject;
+	private bool can2X;
 
     private Rigidbody2D rb;
 
@@ -35,6 +36,7 @@ public class ActPlayer : MonoBehaviour
     {
         canJump = true;
         canDash = true;
+		can2X = false;
     }
 
     void Start()
@@ -128,6 +130,7 @@ public class ActPlayer : MonoBehaviour
         {
             EndAnimationJump();
         }
+		print(can2X);
     }
 
 
@@ -214,7 +217,11 @@ public class ActPlayer : MonoBehaviour
         {
             if (coll.transform.gameObject.GetComponent<DestroyPettern>().GetCanDestroy() && canDestroyObject == true)
             {
+				if(can2X){
+					point.num += 300 * 2;
+				}else{
                 point.num += 300;
+				}
                 Destroy(coll.gameObject);
             }
             else
@@ -231,7 +238,11 @@ public class ActPlayer : MonoBehaviour
         }
         if (coll.gameObject.tag.Equals("Coin"))
         {
-            point.num += 500;
+			if(can2X){
+            point.num += 500 * 2;
+			}else{
+			point.num += 500;
+			}
             Destroy(coll.gameObject);
         }
         if (coll.gameObject.tag.Equals("2X"))
@@ -243,8 +254,8 @@ public class ActPlayer : MonoBehaviour
 //
     IEnumerator DoublePoint()
     {
-        point.num *= 2;
-        yield return new WaitForSeconds(2);
-        StopCoroutine(DoublePoint());
+		can2X = true;
+		yield return new WaitForSeconds(5);
+		can2X = false;
     }
 }
